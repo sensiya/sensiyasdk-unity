@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="description" content="Sensiyasdk-unity : The Unity version of SensiyaSDK.">
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Sensiyasdk-unity</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/sensiya/sensiyasdk-unity">View on GitHub</a>
+
+          <h1 id="project_title">Sensiyasdk-unity</h1>
+          <h2 id="project_tagline">The Unity version of SensiyaSDK.</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/sensiya/sensiyasdk-unity/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/sensiya/sensiyasdk-unity/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h1>
+<a id="sensiya-sdk-unity-integration-for-android" class="anchor" href="#sensiya-sdk-unity-integration-for-android" aria-hidden="true"><span class="octicon octicon-link"></span></a>Sensiya SDK Unity Integration For Android</h1>
+
+<h2>
+<a id="starting-the-sdk" class="anchor" href="#starting-the-sdk" aria-hidden="true"><span class="octicon octicon-link"></span></a>STARTING THE SDK</h2>
+
+<h3>
+<a id="step-1-add-sensiyasdk-files-to-you-project" class="anchor" href="#step-1-add-sensiyasdk-files-to-you-project" aria-hidden="true"><span class="octicon octicon-link"></span></a>Step 1: Add SensiyaSDK files to you project</h3>
+
+<ul>
+<li>Download the Unity SDK from the website and open it.</li>
+<li>Make sure all the files are selected and import them into your project.</li>
+</ul>
+
+<h3>
+<a id="step-2-modify-your-android-manifest" class="anchor" href="#step-2-modify-your-android-manifest" aria-hidden="true"><span class="octicon octicon-link"></span></a>Step 2: Modify your Android Manifest</h3>
+
+<p>The Android Manifest is an integral part of every Android application and contains data about the app that is being used by the Android system to run it. More information about the manifest can be found here: [<a href="http://developer.android.com/guide/topics/manifest/manifest-intro.html">http://developer.android.com/guide/topics/manifest/manifest-intro.html</a>] [1]:</p>
+
+<ul>
+<li>
+<p>If you don't have a custom Android Manifest in your project:</p>
+
+<ol>
+<li> Copy the AndroidManifest.xml file from the Assets/SensiyaSDK/Examples folder to Assets/Plugins/Android folder.</li>
+<li> Open your copied AndroidManifest.xml, find the below tag and replace with your Sensiya API key in the needed place:</li>
+</ol>
+</li>
+</ul>
+
+<div class="highlight highlight-sh"><pre><span class="pl-k">&lt;</span>meta-data android:name=<span class="pl-s1"><span class="pl-pds">"</span>SENSIYA_APP_KEY<span class="pl-pds">"</span></span> android:value=<span class="pl-s1"><span class="pl-pds">"</span>YOUR-API-KEY<span class="pl-pds">"</span></span>/<span class="pl-k">&gt;</span></pre></div>
+
+<ul>
+<li>If you already have a custom Android Manifest in your project (You can look at the AndroidManifest.xml in Assets/SensiyaSDK/Examples to see the needed format):</li>
+</ul>
+
+<p>1.Add the following permissions under the manifest section:</p>
+
+<div class="highlight highlight-sh"><pre><span class="pl-k">&lt;</span>uses-permission android:name=<span class="pl-s1"><span class="pl-pds">"</span>android.permission.INTERNET<span class="pl-pds">"</span></span> /<span class="pl-k">&gt;</span>
+<span class="pl-k">&lt;</span>uses-permission android:name=<span class="pl-s1"><span class="pl-pds">"</span>android.permission.READ_PHONE_STATE<span class="pl-pds">"</span></span> /<span class="pl-k">&gt;</span>
+<span class="pl-k">&lt;</span>uses-permission android:name=<span class="pl-s1"><span class="pl-pds">"</span>android.permission.RECEIVE_BOOT_COMPLETED<span class="pl-pds">"</span></span> /<span class="pl-k">&gt;</span>
+<span class="pl-k">&lt;</span>uses-permission android:name=<span class="pl-s1"><span class="pl-pds">"</span>android.permission.ACCESS_NETWORK_STATE<span class="pl-pds">"</span></span> /<span class="pl-k">&gt;</span>
+<span class="pl-k">&lt;</span>uses-permission android:name=<span class="pl-s1"><span class="pl-pds">"</span>android.permission.WRITE_EXTERNAL_STORAGE<span class="pl-pds">"</span></span> /<span class="pl-k">&gt;</span>
+<span class="pl-k">&lt;</span>uses-permission android:name=<span class="pl-s1"><span class="pl-pds">"</span>android.permission.ACCESS_COARSE_LOCATION<span class="pl-pds">"</span></span> /<span class="pl-k">&gt;</span>
+<span class="pl-k">&lt;</span>uses-permission android:name=<span class="pl-s1"><span class="pl-pds">"</span>android.permission.ACCESS_FINE_LOCATION<span class="pl-pds">"</span></span> /<span class="pl-k">&gt;</span>
+<span class="pl-k">&lt;</span>uses-permission android:name=<span class="pl-s1"><span class="pl-pds">"</span>android.permission.ACCESS_WIFI_STATE<span class="pl-pds">"</span></span> /<span class="pl-k">&gt;</span>
+<span class="pl-k">&lt;</span>uses-permission android:name=<span class="pl-s1"><span class="pl-pds">"</span>android.permission.READ_PROFILE<span class="pl-pds">"</span></span> /<span class="pl-k">&gt;</span>
+<span class="pl-k">&lt;</span>uses-permission android:name=<span class="pl-s1"><span class="pl-pds">"</span>android.permission.READ_CONTACTS<span class="pl-pds">"</span></span> /<span class="pl-k">&gt;</span>
+<span class="pl-k">&lt;</span>uses-permission android:name=<span class="pl-s1"><span class="pl-pds">"</span>android.permission.GET_ACCOUNTS<span class="pl-pds">"</span></span> /<span class="pl-k">&gt;</span>
+<span class="pl-k">&lt;</span>uses-permission android:name=<span class="pl-s1"><span class="pl-pds">"</span>android.permission.READ_CALL_LOG<span class="pl-pds">"</span></span> /<span class="pl-k">&gt;</span>
+<span class="pl-k">&lt;</span>uses-permission android:name=<span class="pl-s1"><span class="pl-pds">"</span>android.permission.READ_SMS<span class="pl-pds">"</span></span> /<span class="pl-k">&gt;</span>
+<span class="pl-k">&lt;</span>uses-permission android:name=<span class="pl-s1"><span class="pl-pds">"</span>android.permission.GET_TASKS<span class="pl-pds">"</span></span>/<span class="pl-k">&gt;</span>
+<span class="pl-k">&lt;</span>uses-permission android:name=<span class="pl-s1"><span class="pl-pds">"</span>android.permission.WAKE_LOCK<span class="pl-pds">"</span></span>/<span class="pl-k">&gt;</span>
+<span class="pl-k">&lt;</span>uses-permission android:name=<span class="pl-s1"><span class="pl-pds">"</span>com.android.browser.permission.READ_HISTORY_BOOKMARKS<span class="pl-pds">"</span></span> /<span class="pl-k">&gt;</span></pre></div>
+
+<p>2.Add the following components under application section:</p>
+
+<div class="highlight highlight-sh"><pre><span class="pl-k">&lt;</span><span class="pl-k">!</span>-- Declare the service of the SDK --<span class="pl-k">&gt;</span>
+<span class="pl-k">&lt;</span>service android:name=<span class="pl-s1"><span class="pl-pds">"</span>com.sensiya.brainssdk.BrainsService<span class="pl-pds">"</span></span>/<span class="pl-k">&gt;</span>
+
+<span class="pl-k">&lt;</span><span class="pl-k">!</span>-- Declare receiver that is used by the SDK --<span class="pl-k">&gt;</span>
+<span class="pl-k">&lt;</span>receiver android:name=<span class="pl-s1"><span class="pl-pds">"</span>com.sensiya.brainssdk.BrainsBroadcastReceiver<span class="pl-pds">"</span></span><span class="pl-k">&gt;</span>
+    <span class="pl-k">&lt;</span>intent-filter<span class="pl-k">&gt;</span>
+        <span class="pl-k">&lt;</span>action android:name=<span class="pl-s1"><span class="pl-pds">"</span>android.intent.action.BOOT_COMPLETED<span class="pl-pds">"</span></span>/<span class="pl-k">&gt;</span>
+        <span class="pl-k">&lt;</span>action android:name=<span class="pl-s1"><span class="pl-pds">"</span>android.net.wifi.STATE_CHANGE<span class="pl-pds">"</span></span>/<span class="pl-k">&gt;</span>
+        <span class="pl-k">&lt;</span>action android:name=<span class="pl-s1"><span class="pl-pds">"</span>android.location.PROVIDERS_CHANGED<span class="pl-pds">"</span></span>/<span class="pl-k">&gt;</span>
+    <span class="pl-k">&lt;</span>/intent-filter<span class="pl-k">&gt;</span>
+<span class="pl-k">&lt;</span>/receiver<span class="pl-k">&gt;</span>
+
+<span class="pl-k">&lt;</span><span class="pl-k">!</span>-- Declare the receiver that is used by the Unity SDK --<span class="pl-k">&gt;</span>
+<span class="pl-k">&lt;</span>receiver android:name=<span class="pl-s1"><span class="pl-pds">"</span>com.sensiya.brainssdk.unity.BrainsReceiver<span class="pl-pds">"</span></span><span class="pl-k">&gt;</span>
+    <span class="pl-k">&lt;</span>intent-filter<span class="pl-k">&gt;</span>
+        <span class="pl-k">&lt;</span>action android:name=<span class="pl-s1"><span class="pl-pds">"</span>brainssdk.intent.action.LEAVING_HOME<span class="pl-pds">"</span></span>/<span class="pl-k">&gt;</span>
+        <span class="pl-k">&lt;</span>action android:name=<span class="pl-s1"><span class="pl-pds">"</span>brainssdk.intent.action.ENTERING_HOME<span class="pl-pds">"</span></span>/<span class="pl-k">&gt;</span>
+        <span class="pl-k">&lt;</span>action android:name=<span class="pl-s1"><span class="pl-pds">"</span>brainssdk.intent.action.LEAVING_WORK<span class="pl-pds">"</span></span>/<span class="pl-k">&gt;</span>
+        <span class="pl-k">&lt;</span>action android:name=<span class="pl-s1"><span class="pl-pds">"</span>brainssdk.intent.action.ENTERING_WORK<span class="pl-pds">"</span></span>/<span class="pl-k">&gt;</span>
+        <span class="pl-k">&lt;</span>action android:name=<span class="pl-s1"><span class="pl-pds">"</span>brainssdk.intent.action.HEADING_TO_WORK<span class="pl-pds">"</span></span>/<span class="pl-k">&gt;</span>
+        <span class="pl-k">&lt;</span>action android:name=<span class="pl-s1"><span class="pl-pds">"</span>brainssdk.intent.action.HEADING_HOME<span class="pl-pds">"</span></span>/<span class="pl-k">&gt;</span>
+        <span class="pl-k">&lt;</span>action android:name=<span class="pl-s1"><span class="pl-pds">"</span>brainssdk.intent.action.WENT_TO_SLEEP<span class="pl-pds">"</span></span>/<span class="pl-k">&gt;</span>
+        <span class="pl-k">&lt;</span>action android:name=<span class="pl-s1"><span class="pl-pds">"</span>brainssdk.intent.action.WOKE_UP<span class="pl-pds">"</span></span>/<span class="pl-k">&gt;</span>
+        <span class="pl-k">&lt;</span>action android:name=<span class="pl-s1"><span class="pl-pds">"</span>brainssdk.intent.action.GEO_FENCE<span class="pl-pds">"</span></span>/<span class="pl-k">&gt;</span>
+        <span class="pl-k">&lt;</span>action android:name=<span class="pl-s1"><span class="pl-pds">"</span>brainssdk.intent.action.USER_ACTIVITY_CHANGED<span class="pl-pds">"</span></span>/<span class="pl-k">&gt;</span>
+        <span class="pl-k">&lt;</span>action android:name=<span class="pl-s1"><span class="pl-pds">"</span>brainssdk.intent.action.USER_BROWSING<span class="pl-pds">"</span></span>/<span class="pl-k">&gt;</span>
+        <span class="pl-k">&lt;</span>action android:name=<span class="pl-s1"><span class="pl-pds">"</span>brainssdk.intent.action.PARKED<span class="pl-pds">"</span></span>/<span class="pl-k">&gt;</span>
+    <span class="pl-k">&lt;</span>/intent-filter<span class="pl-k">&gt;</span>
+<span class="pl-k">&lt;</span>/receiver<span class="pl-k">&gt;</span>
+
+<span class="pl-k">&lt;</span><span class="pl-k">!</span>-- Add the unique application key that was generated <span class="pl-k">for</span> <span class="pl-vo">your</span> app <span class="pl-k">in</span> the web console --<span class="pl-k">&gt;</span>
+<span class="pl-k">&lt;</span>meta-data android:name=<span class="pl-s1"><span class="pl-pds">"</span>SENSIYA_APP_KEY<span class="pl-pds">"</span></span> android:value=<span class="pl-s1"><span class="pl-pds">"</span> YOUR-API-KEY <span class="pl-pds">"</span></span>/<span class="pl-k">&gt;</span></pre></div>
+
+<p>3.Put your API key where it says 'YOUR-API-KEY'</p>
+
+<h3>
+<a id="step-3-add-brainsprefab-to-your-scene" class="anchor" href="#step-3-add-brainsprefab-to-your-scene" aria-hidden="true"><span class="octicon octicon-link"></span></a>Step 3: Add BrainsPrefab to your scene</h3>
+
+<ul>
+<li><p>Drag BrainsPrefab from Assets/SensiyaSDK/Prefabs into the first scene in your project that loads. This GameObject will start SensiyaSDK automatically when your scene loads and will persist across scene changes so you don't have to worry about adding it to other scenes.</p></li>
+<li><p>BrainsAPICallback contains the events for monitoring the SDK state. Get notified when the SDK is connected by registering to the OnConnected event in BrainsAPICallback.OnConnected. Once you get OnConnected, your SensiyaSDK is ready for usage.</p></li>
+<li>
+<p>You can also register to the other events:</p>
+
+<ul>
+<li>BrainsAPICallback.OnError – Notifies when an error occurred.</li>
+<li>BrainsAPICallback.OnDisconnected – Notifies when the SensiyaSDK got disconnected.</li>
+<li>BrainsAPICallback.OnUserDataReady – Notifies when the user's demographic data is ready for usage.</li>
+</ul>
+</li>
+</ul>
+
+<h2>
+<a id="getting-asynchronous-updates" class="anchor" href="#getting-asynchronous-updates" aria-hidden="true"><span class="octicon octicon-link"></span></a>GETTING ASYNCHRONOUS UPDATES</h2>
+
+<h3>
+<a id="step-1-getting-updates" class="anchor" href="#step-1-getting-updates" aria-hidden="true"><span class="octicon octicon-link"></span></a>Step 1: Getting updates</h3>
+
+<p>In order to get asynchronous events from the SDK you need to register to the BrainsGameObject.OnBrainsEvent event.</p>
+
+<h3>
+<a id="step-2-handling-the-sensiyasdks-events" class="anchor" href="#step-2-handling-the-sensiyasdks-events" aria-hidden="true"><span class="octicon octicon-link"></span></a>Step 2: Handling the SensiyaSDK's events</h3>
+
+<p>Every event contains an action (event type) and dictionary that contains optional extra data. All the possible event types reside in the BrainsConstants class. Every event is documented and tells exactly what extra data comes with it (Not all events contains extra data).</p>
+
+<h3>
+<a id="calling-synchronous-api" class="anchor" href="#calling-synchronous-api" aria-hidden="true"><span class="octicon octicon-link"></span></a>CALLING SYNCHRONOUS API</h3>
+
+<p>After you get notified that the SensiyaSDK is connected, you can get specific information using the direct Brains API:</p>
+
+<ul>
+<li>Get the Sensiya SDK version</li>
+</ul>
+
+<div class="highlight highlight-sh"><pre>string version = <span class="pl-en">BrainsAPI.GetVersion</span>();</pre></div>
+
+<ul>
+<li>Gender:</li>
+</ul>
+
+<div class="highlight highlight-sh"><pre>UserData user = <span class="pl-en">BrainsAPI.User.GetUserData</span>();
+Gender gender = user.Gender<span class="pl-k">;</span> // Male/Female/Unknown
+float genderConfidence = user.GenderConfidence<span class="pl-k">;</span> // Confidence level from 0 to 1</pre></div>
+
+<ul>
+<li>Get us  er age range:</li>
+</ul>
+
+<div class="highlight highlight-sh"><pre>UserData user = <span class="pl-en">BrainsAPI.User.GetUserData</span>();
+AgeRange ageRange = user.AgeRange<span class="pl-k">;</span>
+float ageRangeConfidence = user.AgeRangeConfidence<span class="pl-k">;</span>
+float estimatedAge = user.EstimatedAge<span class="pl-k">;</span></pre></div>
+
+<ul>
+<li>Get user home location:</li>
+</ul>
+
+<div class="highlight highlight-sh"><pre>Location home = <span class="pl-en">BrainsAPI.Location.GetHomeLocation</span>();
+double latitude = home.Latitude<span class="pl-k">;</span>
+double longitude = home.Longitude<span class="pl-k">;</span></pre></div>
+
+<ul>
+<li>Get user's last known actvity:</li>
+</ul>
+
+<div class="highlight highlight-sh"><pre>Location home = <span class="pl-en">BrainsAPI.Location.GetHomeLocation</span>();
+double latitude = home.Latitude<span class="pl-k">;</span>
+double longitude = home.Longitude<span class="pl-k">;</span></pre></div>
+
+<h2>
+<a id="geofencing" class="anchor" href="#geofencing" aria-hidden="true"><span class="octicon octicon-link"></span></a>GEOFENCING</h2>
+
+<p>Using our SDK you can define custom geo fences for your users. You can define geo fences using the following APIs:</p>
+
+<ul>
+<li>Define simple geo fence with custom radius: </li>
+</ul>
+
+<div class="highlight highlight-sh"><pre>BrainsAPI.LocationServices.GeoFencing.AddGeofence(geoFenceId, latitude, longitude, radius)<span class="pl-k">;</span></pre></div>
+
+<ul>
+<li>Define simple geo fence with custom radius and expiration:</li>
+</ul>
+
+<div class="highlight highlight-sh"><pre>BrainsAPI.LocationServices.GeoFencing.AddGeofence(geoFenceId, latitude, longitude, radius, expiration)<span class="pl-k">;;</span></pre></div>
+
+<ul>
+<li>Define simple geo fence with custom radius, expiration and loitering time to indicate if the user is dwelling:</li>
+</ul>
+
+<div class="highlight highlight-sh"><pre>BrainsAPI.LocationServices.GeoFencing.AddGeofence(geoFenceId, latitude, longitude, radius, expiration, loitering)<span class="pl-k">;</span></pre></div>
+
+<p>Upon receiving a geo event you will be able to identify the triggering geo fence and transition type from the extra data arrived with the event</p>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Sensiyasdk-unity maintained by <a href="https://github.com/sensiya">sensiya</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
