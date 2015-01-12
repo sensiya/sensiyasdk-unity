@@ -115,6 +115,10 @@
         <span class="pl-k">&lt;</span>action android:name=<span class="pl-s1"><span class="pl-pds">"</span>brainssdk.intent.action.USER_ACTIVITY_CHANGED<span class="pl-pds">"</span></span>/<span class="pl-k">&gt;</span>
         <span class="pl-k">&lt;</span>action android:name=<span class="pl-s1"><span class="pl-pds">"</span>brainssdk.intent.action.USER_BROWSING<span class="pl-pds">"</span></span>/<span class="pl-k">&gt;</span>
         <span class="pl-k">&lt;</span>action android:name=<span class="pl-s1"><span class="pl-pds">"</span>brainssdk.intent.action.PARKED<span class="pl-pds">"</span></span>/<span class="pl-k">&gt;</span>
+        <span class="pl-k">&lt;</span>action android:name=<span class="pl-s1"><span class="pl-pds">"</span>brainssdk.intent.action.DRIVING<span class="pl-pds">"</span></span>/<span class="pl-k">&gt;</span>
+        <span class="pl-k">&lt;</span>action android:name=<span class="pl-s1"><span class="pl-pds">"</span>brainssdk.intent.action.TRAVELING<span class="pl-pds">"</span></span>/<span class="pl-k">&gt;</span>
+        <span class="pl-k">&lt;</span>action android:name=<span class="pl-s1"><span class="pl-pds">"</span>brainssdk.intent.action.BACK_FROM_TRAVEL<span class="pl-pds">"</span></span>/<span class="pl-k">&gt;</span>
+        <span class="pl-k">&lt;</span>action android:name=<span class="pl-s1"><span class="pl-pds">"</span>brainssdk.intent.action.ABOUT_TO_TRAVEL<span class="pl-pds">"</span></span>/<span class="pl-k">&gt;</span>
     <span class="pl-k">&lt;</span>/intent-filter<span class="pl-k">&gt;</span>
 <span class="pl-k">&lt;</span>/receiver<span class="pl-k">&gt;</span>
 
@@ -220,7 +224,7 @@ double longitude = home.Longitude<span class="pl-k">;</span></pre></div>
 
 <div class="highlight highlight-sh"><pre>BrainsAPI.LocationServices.GeoFencing.AddGeofence(geoFenceId, latitude, longitude, radius, expiration, loitering)<span class="pl-k">;</span></pre></div>
 
-<p>Upon receiving a geo event you will be able to identify the triggering geo fence and transition type from the extra data arrived with the event</p>
+<p>Upon receiving a geo event you will be able to identify the triggering geo fence and transition type from the extra data arrived with the event.</p>
       </section>
     </div>
 
